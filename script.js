@@ -1,4 +1,3 @@
-// Assignment Code
 var generateBtn = document.querySelector("#generate");
 
 function generatePassword() {
@@ -63,15 +62,6 @@ function generatePassword() {
   var specialc = ["!", "?", "~", "#", "$", "%", "^", "&", "*", "/"];
   var wantedChars = [];
 
-  // WHEN prompted for character types to include in the password
-  // THEN I choose lowercase, uppercase, numeric, and/or special characters
-  // WHEN I answer each prompt
-  // THEN my input should be validated and at least one character type should be selected
-  // WHEN all prompts are answered
-  // THEN a password is generated that matches the selected criteria
-  // WHEN the password is generated
-  // THEN the password is either displayed in an alert or written to the page
-
   do {
     var length = prompt("Enter a number between 8 and 128 characters");
 
@@ -87,13 +77,7 @@ function generatePassword() {
     wantedChars = wantedChars.concat(lcase)
 
     console.log(wantedChars)
-
-    // Use concat method to add the lowercase array to the wantedChar array
   }
-
-  
-
-  // expected output: Array ["a", "b", "c", "d", "e", "f"]
   
   var upper = confirm("would you like to include upper case?");
 
@@ -129,18 +113,12 @@ function generatePassword() {
     var random = Math.floor(Math.random() * wantedChars.length);
     console.log(random);
     var newchars = wantedChars[random];
-    // Randomly get numbers based on the wanted character array
-
-    // use the array and the randomly generated number to get a character
-
-    // add it to the password
     pw = pw + newchars;
     console.log(pw);
   }
 
   return pw;}
 
-  // Write password to the #password input
   function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
