@@ -2,14 +2,67 @@
 var generateBtn = document.querySelector("#generate");
 
 function generatePassword() {
+  var pw = "";
+  var nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  var lcase = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
+  ];
+  var ucase = [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
+  ];
+  var specialc = ["!", "?", "~", "#", "$", "%", "^", "&", "*", "/"];
+  var wantedChars = [];
 
-var pw = "";
-var nums = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-var lcase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-var ucase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', Z]
-var specialc = [!, ?, ~, #, $, %, ^, &, *, /]
-  
-  
   // WHEN prompted for character types to include in the password
   // THEN I choose lowercase, uppercase, numeric, and/or special characters
   // WHEN I answer each prompt
@@ -19,47 +72,81 @@ var specialc = [!, ?, ~, #, $, %, ^, &, *, /]
   // WHEN the password is generated
   // THEN the password is either displayed in an alert or written to the page
 
-do {
-  var length = it ggm("Enter a number between 8 and 128 characters");
+  do {
+    var length = prompt("Enter a number between 8 and 128 characters");
 
-  if (length < 8 || length > 128 || is NaN(length))
-  { alert(please enter a number between 8 and 128) }
-  while (length < 8 || length > 128 || is NaN(length) }
-} 
+    if (length < 8 || length > 128 || isNaN(length)) {
+      alert("please enter a number between 8 and 128");
+    }
+  } while (length < 8 || length > 128 || isNaN(length));
+
+  var lower = confirm("would you like to include lower case?");
+
+  if (lower) {
+  
+    wantedChars = wantedChars.concat(lcase)
+
+    console.log(wantedChars)
+
+    // Use concat method to add the lowercase array to the wantedChar array
+  }
+
+  
+
+  // expected output: Array ["a", "b", "c", "d", "e", "f"]
+  
+  var upper = confirm("would you like to include upper case?");
+
+  if (upper) {
+    
+    wantedChars = wantedChars.concat(ucase)
+
+    console.log(wantedChars)
+
+  }
+
+  var spec = confirm("would you like to include special characters?");
+
+  if (spec) {
+    
+    wantedChars = wantedChars.concat(specialc)
+
+    console.log(wantedChars)
 
 
-var lcase = confirm("would you like to include lower case?")
+  }
 
-if (lcase) {
-  alert ("I want lower case")
-}
+  var numbs = confirm("would you like to include numbers?");
 
-var ucase = confirm("would you like to include upper case?")
+  if (numbs) {
+    
+    wantedChars = wantedChars.concat(nums)
 
-if (ucase) {
-  alert ("I want upper case")
-}
+    console.log(wantedChars)
+  }
 
-var specialc = confirm("would you like to special characters?")
+  for (var i = 0; i < length; i++) {
+    var random = Math.floor(Math.random() * wantedChars.length);
+    console.log(random);
+    var newchars = wantedChars[random];
+    // Randomly get numbers based on the wanted character array
 
-if (ucase) {
-  alert ("I want special characters")
-}
+    // use the array and the randomly generated number to get a character
 
-for (var i = 0, i < length; i++){
-  pw = pw + i
-  console.log(pw);
-}
+    // add it to the password
+    pw = pw + newchars;
+    console.log(pw);
+  }
 
-return pw;
+  return pw;}
 
-// Write password to the #password input
-function writePassword() {
+  // Write password to the #password input
+  function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-}
+  }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writePassword)
